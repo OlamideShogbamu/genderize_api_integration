@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from datetime import datetime, timezone
 import requests
+import os
 
 app = Flask(__name__)
 
@@ -47,5 +48,5 @@ def classify():
     
     return make_response({'status': 'success', 'data': processed_data}, 200)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(port=int(os.environ.get("PORT", 3000)))
